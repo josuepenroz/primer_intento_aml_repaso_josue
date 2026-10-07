@@ -4,7 +4,8 @@ from flask_app import app
 #QUE CREEMOS
 
 #-------------
-
+from flask_app.controllers import usuarios
+from flask_app.controllers import peliculas
 
 if __name__=="__main__": 
 
