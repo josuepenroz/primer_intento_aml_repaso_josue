@@ -15,7 +15,7 @@ class Usuario:
     #para guardad un 1 registro 
     @classmethod
     def save(cls,data):
-        query = "INSERT INTO usuarios (nombre, apellido, email, password, created_at, updated_at) VALUES (%(nombre)s, %(apellido)s, %(email)s, %(password)s, NOW() NOW())"
+        query = "INSERT INTO usuarios (nombre, apellido, email, password, created_at, updated_at) VALUES (%(nombre)s, %(apellido)s, %(email)s, %(password)s, NOW(), NOW())"
         return connectToMySQL('cinepedia').query_db(query,data)
         #metodos para ver todos los registros
     
@@ -27,7 +27,7 @@ class Usuario:
         usuarios = []
         for usuario in usuarios_en_bd:
             #voy a crear una instancia de la clase Usuario al final de la lista usuarios
-            usuario.append(cls(usuario))
+            usuarios.append(cls(usuario))
         return usuarios 
     @classmethod
     def get_one(cls,datos):

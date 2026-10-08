@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/crear_usuario" method="post">
+        <h2>Registro</h2>
+        <br>
+        <label for="nombre_usuario_pelicula">Nombre:</label>
+        <input type="text" id="nombre_usuario_pelicula" name="nombre">
+        <br>
+        <label for="director_pelicula">director</label>
+        <input type="text" id="director_pelicula" name="director">
+        <br>
+        <label for="fecha_estreno">fecha_estreno</label>
+        <input type="datetime" id="fecha_estreno" name="fecha_estreno">
+        <br>
+        <label for="sinopsis">sinopsis</label>
+        <textarea name="sinopsis" id="sinopsis"></textarea> 
+
+      
+        <input type="submit" value="Registrar">
+    </form>
+
+    <form action="/cerrar sesion" method="post">
+        <h2>Inicio Sesión</h2>
+        <br>
+        <label for="email_inicio_sesion">E-mail:</label>
+        <input type="email" id="email_inicio_sesion" name="email_inicio_sesion">  
+        <br>
+        <label for="password_inicio_sesion">Password:</label>
+        <input type="email" id="password_inicio_sesion" name="password_inicio_sesion">  
+        <br>
+        <input type="submit" value="Iniciar Sesión">   
+    </form>
+</body>
+</html>
