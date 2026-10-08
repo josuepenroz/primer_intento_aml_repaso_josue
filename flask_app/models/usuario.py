@@ -1,7 +1,9 @@
 #TODAS LAS CLASES INPORTAR MYSQLCONNECTION
 
 from flask_app.config.mysqlconnection import connectToMySQL
-
+import re
+from flask import flash
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+.[a-zA-Z]+$')
 class Usuario:
     #metodo constructor 
     def __init__(self,data):
@@ -46,4 +48,44 @@ class Usuario:
     
     #metodo para ver 1 registro
     #metodo para editar registro
-    #
+    #Usuamos metodo estaticp para validar los formularios
+    @classmethod
+    def get_by_email(cls,datos):
+        query   = "SELECT * FROM usuarios WHERE email=%(email)s"    
+        usuarios_en_db = connectToMySQL('cinepedia').query_db(query,datos)
+        return cls(usuarios_en_db[0])
+    
+    
+    
+    @staticmethod
+
+    def validar_usuario( usuario ):
+        #por cada validacion que yo tenga voy a un if
+       es_valido = True
+
+       #Revisa si el campo coincide con el patrón
+
+       if not EMAIL_REGEX.match(usuario['email']):
+
+           flash("E-mail inválido")
+
+           es_valido = False
+       if len(usuario['nombre']) <= 2:
+            flash("nombre de usuario necesita almenos 2 caracteres")
+            es_valido = False
+            #falta validacion de contraseña = confirmar contraseña
+       if not Usuario['password'] == usuario["password_conf"]:
+            flash 
+            return es_valido
+       if not Usuario.get_by_email({'email':usuario['email']}):
+           flash('el correo no se encuentra disponible')
+           es_valido = False
+           return es_valido
+       @staticmethod
+       def  validar_login(usuario):
+           es_valido=True
+           if not Usuario.get_by_email({'email':usuario['email']}):
+               flash('el correo no se encuentra el la base de datos')
+               
+       
+        

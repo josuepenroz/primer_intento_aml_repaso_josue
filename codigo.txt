@@ -1,0 +1,4 @@
+        "nombre":request.form.get('nombre'),
+        "apellido":request.form.get('apellido'),
+        "email":request.form.get('email'),
+        "password":request.form.get('password')
